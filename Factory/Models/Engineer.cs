@@ -5,8 +5,7 @@ namespace Factory.Models
   {
     public int EngineerId { get; set; }
     public string Name { get; set; }
-    public List<Machine> Machines { get; set; } // Navigation Property
-    public Machine Machine { get; set;  } // Reference Navigation property
+       public List<EngineerMachine> EngineerMachines { get; set; } // JOIN TABLE
 
   }
 }

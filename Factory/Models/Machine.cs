@@ -7,8 +7,7 @@ namespace Factory.Models
   {
     public int MachineId { get; set; }
     public string Name { get; set; }
-    public List<EngineerMachine> EngineerMachines { get; set; } // This is the Join Table
-    public Engineer Engineer { get; set;  } // Navigation Property
+    public List<EngineerMachine> EngineerMachines { get; set; } // JOIN TABLE
 
 
   }
