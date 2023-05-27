@@ -7,26 +7,50 @@ using System.Linq;
 
 namespace Factory.Controllers
 {
-  public class MachinesController : Controller
-  {
-    private readonly FactoryContext _db;
-
-    public MachinesController(FactoryContext db)
+    public class MachinesController : Controller
     {
-      _db = db;
+        private readonly FactoryContext _db;
+
+        public MachinesController(FactoryContext db)
+        {
+            _db = db;
+        }
+
+        public ActionResult Index()
+        {
+            List<Machine> model = _db.Machines
+                                            // .Include(machine => machine) 
+                                            .ToList();
+            return View(model);
+        }
+
+        public ActionResult Create()
+        {
+            // ViewBag = new SelectList(_db, "", "");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Machine machine)
+        {
+            if (!ModelState.IsValid)
+            {
+                // ViewBag = new SelectList(_db, "", "");
+                return View();
+            }
+            else
+            {
+                _db.Machines.Add(machine);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
+
+
+
+
+
+
     }
-
-    public ActionResult Index()
-    {
-      List<Machine> model = _db.Machines
-                                      // .Include(machine => machine.Department) 
-                                      .ToList();
-      return View(model);
-    }
-
-
-
-
-
-  }
 }
