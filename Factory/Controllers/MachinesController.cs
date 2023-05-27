@@ -55,6 +55,35 @@ namespace Factory.Controllers
             return View(thisMachine);
         }
 
+        public ActionResult Edit(int id)
+        {
+            Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+            return View(thisMachine);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Machine machine)
+        {
+            _db.Machines.Update(machine);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+            return View(thisMachine);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+            _db.Machines.Remove(thisMachine);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
 
 
