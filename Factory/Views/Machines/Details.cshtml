@@ -1,0 +1,39 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models;
+@model Factory.Models.Machine
+
+<h2>Machine Details</h2>
+<hr />
+<br>
+<h4>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h4>
+
+@if (Model.EngineerMachines.Count == 0)
+{
+  <p>No engineers have been assigned to work on this machine!</p>
+}
+else
+{
+  <h4>The following engineers are working on this machine: </h4>
+  <ul>
+  @foreach (EngineerMachine join in Model.EngineerMachines)
+    {
+      <li>@Html.ActionLink($"Engineer: {join.Engineer.Name}", "Details", "Engineers", new { id = join.Engineer.EngineerId})</li>
+      @using (Html.BeginForm("DeleteJoin", "Machines"))
+      {
+        @Html.Hidden("joinId", join.EngineerMachineId)
+        <input type="submit" value="Remove engineer" />
+      }
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Assign Engineer to this machine!", "AddEngineer", new { id = Model.MachineId })</p>
+
+<br>
+<br>
+<p>@Html.ActionLink($"Edit {Model.Name}", "Edit", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink($"Delete {Model.Name} 😞", "Delete", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Back to machine list", "Index")</p>
