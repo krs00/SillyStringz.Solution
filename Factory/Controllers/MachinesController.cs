@@ -47,6 +47,17 @@ namespace Factory.Controllers
         }
 
 
+        public ActionResult Details(int id)
+        {
+            Machine thisMachine = _db.Machines
+
+                                .Include(machine => machine.EngineerMachines)
+
+                                .FirstOrDefault(machine => machine.MachineId == id);
+            return View(thisMachine);
+        }
+
+
 
 
 
