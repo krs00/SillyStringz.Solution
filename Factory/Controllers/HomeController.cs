@@ -3,7 +3,7 @@ using Factory.Models;
 using System.Collections.Generic;
 using System.Linq; 
 
-namespace UniversityRegistrar.Controllers
+namespace SillyStringz.Controllers 
 {
     public class HomeController : Controller
     {
