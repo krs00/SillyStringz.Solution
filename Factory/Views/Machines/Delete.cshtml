@@ -4,15 +4,14 @@
 
 @model Factory.Models.Machine
 
-<h1>Are you sure you want to delete @Model.Name?</h1>
-<br>
+<h1>Are you sure you want to delete this machine?</h1>
 <br>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
-  <input type="submit" value="Delete This Machine"> 
+  <input type="submit" value="Delete Machine"> 
 }
 
 <br>
 <p>@Html.ActionLink("Back", "Details")</p> 
-<p>@Html.ActionLink("Back to Machine list", "Index")</p>
+<p>@Html.ActionLink("Back to Machine List", "Index")</p>
