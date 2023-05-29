@@ -51,6 +51,7 @@ namespace Factory.Controllers
         {
             Engineer thisEngineer = _db.Engineers
                                 .Include(engineer => engineer.EngineerMachines)
+                                .ThenInclude(join => join.Machine) 
                                 .FirstOrDefault(engineer => engineer.EngineerId == id);
             return View(thisEngineer);
         }
@@ -58,7 +59,7 @@ namespace Factory.Controllers
         public ActionResult Edit(int id)
         {
             Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
-            return View(thisEngineer);
+            return View(thisEngineer); 
         }
 
         [HttpPost]
