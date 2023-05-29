@@ -10,6 +10,8 @@
 * .NET
 * SQL
 * Entity Framework Core
+* ASP.NET Core
+* Pomelo Entity Framework Core 
 
 ## Description
 
