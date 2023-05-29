@@ -31,8 +31,9 @@ Follow the instructions in the LearnHowToProgram.com lesson ["Creating a Test Da
 
 1. Clone this repo.
 2. Open the terminal and navigate to this project's production directory called "HairSalon".
-3. Within the production directory "HairSalon", create a new file called `appsettings.json`.
-4. Within `appsettings.json`, put in the following code, replacing the `uid` and `pwd` values with your own username and password for MySQL.
+3. Build the database with `dotnet ef database update` command.
+4. Within the production directory "HairSalon", create a new file called `appsettings.json`.
+5. Within `appsettings.json`, put in the following code, replacing the `uid` and `pwd` values with your own username and password for MySQL.
 
 ```json
 {
@@ -42,9 +43,8 @@ Follow the instructions in the LearnHowToProgram.com lesson ["Creating a Test Da
 }
 ```
 
-5. Within the production directory "Factory", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
-4. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/lessons/redirecting-to-https-and-issuing-a-security-certificate).
-6. Build the database with `dotnet ef database update` command.
+6. Within the production directory "Factory", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
+7. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/lessons/redirecting-to-https-and-issuing-a-security-certificate).
 
 ## Known Bugs
 
