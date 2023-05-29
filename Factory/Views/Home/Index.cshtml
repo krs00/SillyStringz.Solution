@@ -2,6 +2,8 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models;
+
 <h1>🤖Welcome to Dr. Sillystringz's Factory!🤖</h1>
 <br>
 <h2>This is Dr. Sillystringz factory, home of the famous Plumbus and more!</h2>
@@ -10,3 +12,39 @@
 <h3>@Html.ActionLink("View Machines", "Index", "Machines")</h3>
 <br>
 <h3>@Html.ActionLink("View Engineers", "Index", "Engineers")</h3>
+<br>
+<br>
+<hr>
+<h2>This is for the splash page requirement, lol almost forgot</h2>
+<h2>As you can see I read the homework 😎😎 </h2>
+ 
+<br>
+<br>
+
+<h4>Machines</h4>
+@if (Model["machines"].Length == 0)
+{
+  <p>No machines have been added yet!</p>
+} 
+<ul>
+  @foreach (Machine machine in Model["machines"])
+  {
+    <li>@Html.ActionLink(@machine.Name, "Details", "Machines", new { id = @machine.MachineId})</li>
+  }
+</ul>
+
+<br>
+<hr>
+<br>
+
+<h4>Engineers</h4>
+@if (Model["engineers"].Length == 0)
+{
+  <p>No engineers at the factory!</p>
+} 
+<ul>
+  @foreach (Engineer engineer in Model["engineers"])
+  {
+    <li>@Html.ActionLink(@engineer.Name, "Details", "Engineers", new { id = @engineer.EngineerId})</li>
+  }
+</ul>
