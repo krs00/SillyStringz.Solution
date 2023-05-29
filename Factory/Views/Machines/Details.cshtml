@@ -11,6 +11,7 @@
 
 @if (@Model.EngineerMachines.Count == 0)
 {
+  <br>
   <p>This machine is not being worked on by any engineers!</p>
 }
 else
@@ -20,13 +21,13 @@ else
   @foreach (EngineerMachine join in Model.EngineerMachines)
     {
       <br>
-      <li>@join.Engineer.Name</li>
+      <li>@join.Engineer.Name</li> 
       @using (Html.BeginForm("DeleteJoin", "Machines"))
       {
         @Html.Hidden("joinId", @join.EngineerMachineId)
         <input type="submit" value="Delete" />
         <br>
-        <br> 
+        <br>
       }
     }
   </ul>
