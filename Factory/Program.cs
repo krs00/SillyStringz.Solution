@@ -30,6 +30,10 @@ namespace Factory
 
       app.UseRouting();
 
+      // New code below!
+      app.UseAuthentication(); 
+      app.UseAuthorization();
+
       app.MapControllerRoute(
           name: "default",
           pattern: "{controller=Home}/{action=Index}/{id?}");
