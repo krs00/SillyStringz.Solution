@@ -2,43 +2,50 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Factory.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Factory
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
+        static void Main(string[] args)
+        {
 
-      WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-      builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<FactoryContext>( 
-                        dbContextOptions => dbContextOptions
-                          .UseMySql(
-                            builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
-                          )
-                        )
-                      );
+            builder.Services.AddDbContext<FactoryContext>(
+                              dbContextOptions => dbContextOptions
+                                .UseMySql(
+                                  builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
+                                )
+                              )
+                            );
 
-      WebApplication app = builder.Build();
+            // Configure Program CS for Identity
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                      .AddEntityFrameworkStores<FactoryContext>()
+                      .AddDefaultTokenProviders();
 
-      // app.UseDeveloperExceptionPage();
-      app.UseHttpsRedirection();
-      app.UseStaticFiles();
 
-      app.UseRouting();
+            WebApplication app = builder.Build();
 
-      // New code below!
-      app.UseAuthentication(); 
-      app.UseAuthorization();
+            // app.UseDeveloperExceptionPage();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
-      app.MapControllerRoute(
-          name: "default",
-          pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.UseRouting();
 
-      app.Run();
+            // Configure Program CS for Identity
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.Run();
+        }
     }
-  }
 }
