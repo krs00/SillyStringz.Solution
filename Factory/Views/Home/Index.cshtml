@@ -7,7 +7,7 @@
 <h1>🤖Welcome to Dr. Sillystringz's Factory!🤖</h1>
 <br>
 <h2>This is Dr. Sillystringz factory, home of the famous Plumbus and more!</h2>
-
+<hr> 
 <br>
 <h3>@Html.ActionLink("View Machines", "Index", "Machines")</h3>
 <br>
@@ -15,14 +15,7 @@
 <br>
 <br>
 <h3>@Html.ActionLink("Login or Register", "Index", "Account")</h3>
-<br>
-<hr>
-<h2>This is for the splash page requirement, lol almost forgot</h2>
-<h2>As you can see I read the homework 😎😎 </h2>
- 
-<br>
-<br>
-
+@* 
 <h4>Machines</h4>
 @if (Model["machines"].Length == 0)
 {
@@ -49,4 +42,4 @@
   {
     <li>@Html.ActionLink(@engineer.Name, "Details", "Engineers", new { id = @engineer.EngineerId})</li>
   }
-</ul>
+</ul> *@
