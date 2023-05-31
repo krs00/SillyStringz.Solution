@@ -9,6 +9,7 @@ namespace Factory.Models
     [Required]
     public string Name { get; set; }
     public List<EngineerMachine> EngineerMachines { get; set; } // JOIN TABLE
+    public ApplicationUser User { get; set; }
 
 
   }
